@@ -25,7 +25,7 @@ class HomeController extends Controller
     {
         return view('home');
 
-        $j = 14;
+    $j=14;
 
         if($j>15){
 
