@@ -5,6 +5,8 @@
     <exclude-pattern>database/*</exclude-pattern>
     <exclude-pattern>_ide_helper*</exclude-pattern>
     <exclude-pattern>.phpstorm.meta.php</exclude-pattern>
+    <exclude-pattern>*.css</exclude-pattern>
+    <exclude-pattern>*.js</exclude-pattern>
 
     <arg name="tab-width" value="4"/>
     <!--<arg name="report" value="summary"/>-->
