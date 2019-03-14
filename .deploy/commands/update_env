@@ -1,0 +1,19 @@
+#!/usr/bin/php
+<?php
+function map($data){
+  $k= explode('=', $data);
+  return $k[0];
+}
+
+$root = dirname(dirname(__DIR__)); 
+
+$env= explode("\n",file_get_contents($root.'/.env') );
+$example= explode("\n",file_get_contents($root.'/.env.example') );
+$env_key= array_map('map' , $env);
+$examlpe_key= array_map('map' , $example);
+$diff_key= array_diff($examlpe_key,$env_key);
+$diff='';
+if($diff_key){
+  $diff = "\n".implode("=''\n",$diff_key)."=''";
+}
+file_put_contents($root.'/.env', $diff, FILE_APPEND );
