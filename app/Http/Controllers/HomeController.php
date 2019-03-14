@@ -23,11 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $j=14;
-
-        if($j>15) {
-            $j=1;
-        }
         return view('home');
     }
 }
