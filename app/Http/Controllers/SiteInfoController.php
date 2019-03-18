@@ -2,28 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\SiteInfo;
 use Illuminate\Http\Request;
+use App\Http\Requests\SiteInfoRequest;
+use App\SiteInfo;
 
 class SiteInfoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+        return view('siteInfo');
+    }
+
     public function create()
     {
-        //
+        return view('siteInfo_create');
     }
+
+    public function store(SiteInfoRequest $request)
+    {
+        SiteInfo::create([
+            'site_name' => $request->site_name,
+            'url' => $request->url,
+            'is_crawled' => false,
+        ]);
+        return redirect('/siteInfo');
+    }
+
 }
