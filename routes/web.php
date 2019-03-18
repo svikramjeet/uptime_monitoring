@@ -20,6 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/siteInfo', 'SiteInfoController@index');
-Route::get('/siteInfo/create', 'SiteInfoController@create');
+Route::get('/siteInfo', 'SiteInfoController@index')->name('siteInfo');
+Route::get('/siteInfo/create', 'SiteInfoController@create')->name('siteInfoCreate');
 Route::post('/siteInfo', 'SiteInfoController@store');

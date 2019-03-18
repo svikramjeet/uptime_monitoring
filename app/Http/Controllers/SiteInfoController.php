@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\SiteInfoRequest;
 use App\SiteInfo;
+use Illuminate\Support\Facades\Artisan;
+use Spatie\UptimeMonitor\Models\Monitor;
+use Spatie\UptimeMonitor\MonitorRepository;
 
 class SiteInfoController extends Controller
 {
@@ -15,7 +18,9 @@ class SiteInfoController extends Controller
 
     public function index()
     {
-        return view('siteInfo');
+        Artisan::call('monitor:list');
+        $output = Artisan::output();
+        return view('siteInfo',compact('output'));
     }
 
     public function create()
@@ -30,6 +35,10 @@ class SiteInfoController extends Controller
             'url' => $request->url,
             'is_crawled' => false,
         ]);
+
+        Artisan::call('monitor:create ' . $request->url);
+        Artisan::call('monitor:enable ' . $request->url);
+
         return redirect('/siteInfo');
     }
 
