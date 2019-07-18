@@ -12,6 +12,7 @@
         "brainmaestro/composer-git-hooks": "^2.6",
         "fideloper/proxy": "^4.0",
         "jakub-onderka/php-parallel-lint": "^1.0",
+        "jenssegers/rollbar": "^1.5",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "phpmd/phpmd": "^2.6",
