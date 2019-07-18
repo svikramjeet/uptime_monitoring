@@ -19,7 +19,7 @@ class SiteInfoController extends Controller
     public function index()
     {
         Artisan::call('monitor:list');
-        $output = Artisan::output();
+        $output = Artisan::outpu();
         return view('siteInfo', compact('output'));
     }
 
